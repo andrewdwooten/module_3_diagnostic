@@ -9,10 +9,18 @@ feature 'user visits root' do
   end
 
   scenario 'user searches for stations' do
-    visit '/'
+    VCR.use_cassette('features/user_search/search_by_zip') do
+      visit '/'
 
-    fill_in "q", with: '80203'
-    click_button('Locate')
-    expect(page).to have_content('Welcome')
+      fill_in "q", with: '80203'
+      click_button('Locate')
+
+      expect(current_path).to eq('/search')
+      expect(page).to have_css('#results_table')
+      expect(page).to have_content('JOULE')
+      expect(page).to have_content('24 hours daily')
+      expect(page).to have_content('1000 Speer Blvd, Denver')
+      expect(page).to have_content('ELEC')
+    end
   end
 end

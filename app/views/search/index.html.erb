@@ -1,0 +1,38 @@
+<table id='results_table'>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Address
+    </th>
+    <th>
+    Fuel Type
+    </th>
+    <th>
+      Distance
+    </th>
+    <th>
+      Access Times
+    </th>
+  </tr>
+  <% @stations.each do |station| %>
+    <tr>
+      <td>
+      <%= station.name %>
+      </td>
+      <td>
+        <%= station.address %>, <%= station.city %>
+      </td>
+      <td>
+        <%= station.fuel_type %>
+      </td>
+      <td>
+        <%= station.distance %>
+      </td>
+      <td>
+        <%= station.access_time %>
+      </td>
+    </tr>
+  <% end %>
+</table>

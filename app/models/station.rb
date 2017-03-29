@@ -10,7 +10,7 @@ class Station < OpenStruct
       Station.new(city:         station[:city],
                   address:      station[:street_address],
                   fuel_type:    station[:fuel_type_code],
-                  name:         station[:name],
+                  name:         station[:station_name],
                   distance:     station[:distance],
                   access_time:  station[:access_days_time])
     end
